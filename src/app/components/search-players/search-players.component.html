@@ -1,0 +1,45 @@
+<div class="hero overlay" style="background-image: url('assets/images/bg_3.jpg');">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-9 mx-auto text-center">
+                <h1 class="text-white">Search Players</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form class=" container col-3" [formGroup]="searchPlayersForm">
+
+    <div class="form-group">
+        <input type="number" class="form-control" formControlName="age" placeholder="Age">
+    </div>
+
+
+    <div *ngIf="searchPlayersForm.controls['age'].invalid  &&  searchPlayersForm.controls['age'].touched ">
+        <div *ngIf="searchPlayersForm.controls['age'].errors?.['required'] "> Age is required
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <input type="submit" [disabled]="searchPlayersForm.invalid" class="btn btn-primary py-3 px-5" value="SEARCH"
+            (click)="searchPlayers()">
+    </div>
+
+</form>
+
+<div class="row container site-section">
+    <div class="col-lg-6" *ngFor="let elt of playersResult">
+    <div class="custom-media d-flex" >
+        <div class="img mr-4 mb-4">
+            <img src="assets/images/img_1.jpg" alt="Image" class="img-fluid">
+        </div>
+        <div class="text">
+            <span class="meta">{{elt.name}}</span>
+            <h3 class="mb-4"><a href="#">{{elt.position}}</a></h3>
+            <p>{{elt.number}}</p>
+            <p><a href="#">{{elt.Age}}</a></p>
+        </div>
+    </div>
+    </div>
+    </div>

@@ -1,0 +1,54 @@
+<table class="table table-hover">
+    <thead>
+        <tr >
+            <th scope="col">ID</th>
+            <th scope="col">Team 1</th>
+            <th scope="col">Team 2</th>
+            <th scope="col">Score 1</th>
+            <th scope="col">Score 2</th>
+            <th scope="col">Result</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let m of matchesTab">
+            <th scope="row">{{m._id}}</th>
+            <td>
+              <span [ngStyle]="{color: resultColor(m.scoreOne, m.scoreTwo)}">{{m.teamOne}}</span>
+            </td>
+            <td >
+              <span  [ngStyle]="{color: resultColor(m.scoreTwo, m.scoreOne)}">{{m.teamTwo}}</span>
+            </td>
+            <td>{{m.scoreOne}}</td>
+            <td>{{m.scoreTwo}}</td>
+            <td>
+              <span  *ngIf="m.scoreOne == m.scoreTwo" style="color:blue">Draw</span>
+              <span *ngIf="m.scoreOne !== m.scoreTwo"><span    [ngStyle]="{color: resultColor(m.scoreTwo, m.scoreOne)}"> {{m.teamTwo}}  </span> {{scoreResult(m.scoreTwo, m.scoreOne)}}</span>
+            </td>
+            <td>
+              <button type="button" class="btn btn-success" (click)="goToInfo(m._id)">Display</button>
+              <button type="button" class="btn btn-danger ml-1 mr-1" (click)="deleteMatch(m._id)">Delete</button>
+              <button type="button" class="btn btn-info" (click)="goToEdit(m._id)">Edit</button>
+            </td>
+          </tr>
+
+
+    </tbody>
+</table >
+<table border="1" >
+<th> X</th>
+<th> Tableau</th>
+
+
+<tr *ngFor ="let elt of T">
+   
+    <td>{{elt.x}}</td>
+    <td>
+    <span *ngFor ="let elt2 of elt.tab">  {{elt2}} <br></span>
+      
+    </td>
+</tr>
+
+
+
+</table>

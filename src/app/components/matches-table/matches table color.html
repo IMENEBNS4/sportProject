@@ -1,0 +1,27 @@
+<tr *ngFor="let m of matchesTab">
+            <th scope="row">{{m.id}}</th>
+            <td>
+              <span [ngStyle]="{color: resultColor(m.scoreOne, m.scoreTwo)}">{{m.teamOne}}</span>
+            </td>
+            <td>
+              <span [ngStyle]="{color: resultColor(m.scoreTwo, m.scoreOne)}">{{m.teamTwo}}</span>
+            </td>
+            <td>{{m.scoreOne}}</td>
+            <td>{{m.scoreTwo}}</td>
+            <td>
+              <span *ngIf="scoreResult(m.scoreOne, m.scoreTwo) !== 'Draw'" [ngStyle]="{color: resultColor(m.scoreTwo, m.scoreOne)}">
+                {{m.teamTwo}}
+              </span>
+              <span *ngIf="scoreResult(m.scoreOne, m.scoreTwo) === 'Draw'" [ngStyle]="{color: 'blue'}">
+                Draw
+              </span>
+              <span *ngIf="scoreResult(m.scoreOne, m.scoreTwo) !== 'Draw'">
+                {{scoreResult(m.scoreOne, m.scoreTwo)}}
+              </span>
+            </td>
+            <td>
+              <button type="button" class="btn btn-success" (click)="goToInfo(m.id)">Display</button>
+              <button type="button" class="btn btn-danger ml-1 mr-1" (click)="deleteMatch(m.id)">Delete</button>
+              <button type="button" class="btn btn-info" (click)="goToEdit(m.id)">Edit</button>
+            </td>
+          </tr>

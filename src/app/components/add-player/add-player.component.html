@@ -1,0 +1,49 @@
+<div class="hero overlay" style="background-image: url('assets/images/bg_3.jpg');">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-9 mx-auto text-center">
+        <h1 class="text-white">Add Player</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="site-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-7">
+        <form #playerForm="ngForm" (ngSubmit)="addPlayer()">
+          <div class="form-group">
+            <input type="text" class="form-control" [(ngModel)]="player.name"  [ngModelOptions]="{standalone: true}"  placeholder="Name">
+          </div>
+          <div class="form-group">
+          <select class="form-control" [(ngModel)]="player.position"  [ngModelOptions]="{standalone: true}" >
+              <option value="ATK">ATK</option>
+              <option value="CK">CK</option>
+              <option value="MID">MID</option>
+            </select>
+          </div>
+            <div class="form-group">
+              <input type="number" class="form-control"  [(ngModel)]="player.number"  [ngModelOptions]="{standalone: true}"  placeholder="Nombre">
+            </div>
+            <div class="form-group">
+              <input type="number" class="form-control" [(ngModel)]="player.age"  [ngModelOptions]="{standalone: true}"  placeholder="Age">
+            </div>
+            <div class="form-group">
+              <select class="form-control" [(ngModel)]="player.teamId"  [ngModelOptions]="{standalone: true}" >
+                
+                  <option class="select-value blackcolor" >Select your team</option>
+                  <option *ngFor="let team of teams"   class= "blackcolor" [value]="team._id">{{team.name}}</option>
+                </select>
+              </div>
+
+          <div class="form-group container">
+            <input type="submit" class="btn btn-primary py-3 px-5" value="Add">
+          </div>
+        </form> 
+      </div>
+     
+    </div>
+  </div>
+</div>
+

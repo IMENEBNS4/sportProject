@@ -1,0 +1,46 @@
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Owner</th>
+            <th scope="col">Foundation </th>
+            <th scope="col">Action </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let m of teamsTab">
+            <td scope="row">{{m._id}}</td>
+            <td scope="row">{{m.name}}</td>
+            <td>{{m.owner}}</td>
+            <td>{{m.foundation}}</td>
+
+            <td><button type="button" class="btn btn-success" (click)="goToInfo(m._id)">Display</button>
+                <button type="button" class="btn btn-danger ml-1 mr-1"
+                    (click)="display(m.Name,'deleted')">Delete</button>
+                <button type="button" class="btn btn-info" (click)="display(m.Name,'edited')">Edit</button>
+            </td>
+
+        </tr>
+
+
+    </tbody>
+</table>
+<table border="1" >
+    <th> X</th>
+    <th> Tableau</th>
+    
+    
+    <tr *ngFor ="let elt of T">
+       
+        <td>{{elt.x}}</td>
+        <td>
+        <span *ngFor ="let elt2 of elt.tab">  {{elt2}} <br></span>
+          
+        </td>
+    </tr>
+    
+    
+    
+    </table>
